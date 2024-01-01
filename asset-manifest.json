@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/newyear2024/static/css/main.27f77926.css",
+    "main.js": "/newyear2024/static/js/main.24980ca3.js",
+    "static/js/787.3475a020.chunk.js": "/newyear2024/static/js/787.3475a020.chunk.js",
+    "index.html": "/newyear2024/index.html",
+    "main.27f77926.css.map": "/newyear2024/static/css/main.27f77926.css.map",
+    "main.24980ca3.js.map": "/newyear2024/static/js/main.24980ca3.js.map",
+    "787.3475a020.chunk.js.map": "/newyear2024/static/js/787.3475a020.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.27f77926.css",
+    "static/js/main.24980ca3.js"
+  ]
+}
