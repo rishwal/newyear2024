@@ -1,0 +1,330 @@
+$width: 10vw;
+$animation-duration: 5s;
+
+body {
+  background: black;
+  font-family: cursive;
+}
+#hero-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#hero-container h1 {
+  font-size: clamp(1rem, 2.45vw + 1.44rem, 4.34rem);
+
+  color: #cc00ff;
+  background-image: -webkit-linear-gradient(
+    0deg,
+    #cc00ff 0%,
+    #ff19be 19%,
+    #ff0000 93%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+#hero-container h1 .year {
+  transform: translateX(10px);
+  color: #ffff;
+  color: #0acefa;
+  background-image: -webkit-linear-gradient(
+    0deg,
+    #0acefa 24%,
+    #0cf5e5 68%,
+    #8d36b3 96%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: rollUpAnimation 3s ease-in-out forwards;
+}
+#hero-container h1 .new-year {
+  color: rgb(12, 234, 46);
+  opacity: 0;
+  transform: translateY(50%) scale(0.5);
+  animation: riseUpAnimation 3s ease-in-out forwards;
+  margin-left: 10px;
+}
+
+#hero-container .heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+
+  font-size: clamp(1rem, 2.45vw + 1.44rem, 4.34rem);
+}
+
+.line-container {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  height: 0;
+  .line {
+    background-color: rgb(2, 255, 107);
+    width: 100%;
+    height: 0.5px;
+    position: absolute;
+    box-shadow: 0 0 1em rgb(76, 139, 0);
+
+    animation-name: firework;
+    animation-duration: $animation-duration;
+    animation-timing-function: cubic-bezier(0.26, 0.83, 0.26, 0.83);
+
+    animation-iteration-count: infinite;
+  }
+  .dot {
+    border-radius: 50%;
+    position: relative;
+    animation-name: fireworkflame;
+    animation-duration: $animation-duration;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+  }
+}
+
+.second .line-container {
+  position: absolute;
+  top: 30%;
+  right: 60%;
+  height: 0;
+  .line {
+    background-color: orange;
+    width: 100%;
+    height: 0.5px;
+    position: absolute;
+    box-shadow: 0 0 1em rgb(139, 58, 0);
+    animation-name: firework;
+    animation-duration: $animation-duration;
+    animation-timing-function: cubic-bezier(0.26, 0.83, 0.26, 0.83);
+    animation-delay: 1.5s;
+    animation-iteration-count: infinite;
+  }
+  .dot {
+    border-radius: 50%;
+    position: relative;
+    animation-name: fireworkflame2;
+    animation-duration: $animation-duration;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+  }
+}
+
+.third .line-container {
+  position: absolute;
+  top: 30%;
+  right: 20%;
+  height: 0;
+  .line {
+    background-color: rgb(0, 200, 255);
+    width: 100%;
+    height: 0.5px;
+    position: absolute;
+    box-shadow: 0 0 1em rgb(0, 49, 139);
+    animation-name: firework;
+    animation-duration: $animation-duration;
+    animation-timing-function: cubic-bezier(0.26, 0.83, 0.26, 0.83);
+    animation-delay: 2.5s;
+    animation-iteration-count: infinite;
+  }
+  .dot {
+    border-radius: 50%;
+    position: relative;
+    animation-name: fireworkflame3;
+    animation-duration: $animation-duration;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+  }
+}
+
+.fifth .line-container {
+  position: absolute;
+  top: 80%;
+  right: 10%;
+  height: 0;
+  .line {
+    background-color: rgb(239, 239, 244);
+    animation-delay: 2s;
+  }
+  .dot {
+    animation-name: fireworkflame5;
+  }
+}
+
+.fourth .line-container {
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  height: 0;
+  .line {
+    background-color: rgb(255, 0, 72);
+    animation-delay: 3s;
+  }
+  .dot {
+    animation-name: fireworkflame4;
+  }
+}
+
+.line-container {
+  transform-origin: right;
+  @for $i from 1 through 800 {
+    &:nth-child(#{$i}) {
+      $r: random(360) * 1deg;
+      transform: rotate($r);
+
+      $w: (random(82) + 18) / 100;
+      width: $width * $w;
+
+      $n: random(2);
+      $dot-width: 2px;
+      @if $n == 1 {
+        $dot-width: $dot-width * $w;
+        .line,
+        .dot {
+          opacity: $w;
+        }
+      } @else if $n == 2 {
+        $dot-width: $dot-width * (2 - $w);
+      }
+      .dot {
+        top: -$dot-width / 2;
+        height: $dot-width;
+        width: $dot-width;
+      }
+    }
+  }
+}
+
+@keyframes newyear {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-2%);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-4%);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateY(-8%);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+}
+
+@keyframes firework {
+  0% {
+    left: 100%;
+    width: 0%;
+    opacity: 1;
+  }
+  4%,
+  6% {
+    left: 40%;
+    width: 60%;
+    opacity: 1;
+  }
+  48%,
+  52% {
+    left: 0;
+    width: 0%;
+    opacity: 1;
+  }
+  100% {
+    left: 0;
+    width: 0%;
+    opacity: 0;
+  }
+}
+
+@keyframes fireworkflame {
+  0%,
+  15%,
+  100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgb(114, 250, 157);
+  }
+}
+@keyframes fireworkflame2 {
+  0%,
+  15%,
+  100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgb(250, 148, 114);
+  }
+}
+
+@keyframes fireworkflame3 {
+  0%,
+  15%,
+  100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgb(114, 162, 250);
+  }
+}
+
+@keyframes fireworkflame4 {
+  0%,
+  15%,
+  100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgb(237, 81, 14);
+  }
+}
+
+@keyframes fireworkflame5 {
+  0%,
+  15%,
+  100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(207, 213, 255, 0.71);
+  }
+}
+
+@keyframes rollUpAnimation {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes riseUpAnimation {
+  0% {
+    transform: translateY(50%) scale(0.5);
+    opacity: 0;
+    display: none;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    display: unset;
+  }
+}
